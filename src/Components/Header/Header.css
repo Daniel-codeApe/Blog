@@ -1,0 +1,91 @@
+header {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px black;
+    position: relative;
+    z-index: 44;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav a {
+    margin-right: 30px;
+    color: #000;
+}
+
+.profile {
+    margin-left: 30px;
+    cursor: pointer;
+  }
+  
+  .profile .portrait {
+    display: flex;
+    padding-bottom: 20px;
+  }
+  
+  .profile .portrait img {
+    margin-right: 20px;
+  }
+  
+  .profile button {
+    font-size: 17px;
+    font-weight: 500;
+  }
+  
+  .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .openProfile {
+    color: black;
+    box-shadow: 0 2px 4px black;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    width: 250px;
+    background-color: white;
+  }
+  
+  .openProfile .image {
+    display: flex;
+    align-items: center;
+  }
+  
+  .openProfile .box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    transition: 0.5s;
+  }
+  
+  .openProfile .icon {
+    font-size: 20px;
+    margin-right: 20px;
+  }
+  
+  .openProfile h4 {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .openProfile button:hover {
+    background-color:lightgray;
+  }
+
+  header.active {
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 4px;
+  }
+
+  @media screen and (max-width: 760px) {
+    nav {display: none;}
+  }

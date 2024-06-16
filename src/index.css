@@ -1,0 +1,129 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+h1,
+h2{
+  font-weight: 600;
+}
+h3 {
+  font-size: 17px;
+}
+
+ul, li, a, button, input, textarea {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+::placeholder {
+  font-size: 17px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: black;
+  font-size: 15px;
+}
+
+label {
+  color: grey;
+  font: 13px;
+}
+
+form, 
+.boxItem {
+  border: 1px solid;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: whitesmoke;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  margin-top: 80px;
+  padding: 40px;
+}
+
+form span {
+  margin-bottom: 20px;
+}
+
+form textarea, 
+.accountinfo .right input, 
+form input {
+  border: 1px solid #212121;
+  border-radius: 6px;
+  color: #212121;
+  font-size: 15px;
+  min-height: 44px;
+  padding: 0 20px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+}
+
+.link {
+  color: black;
+}
+
+.container {
+  max-width: 95%;
+  margin: auto;
+}
+
+.button {
+  background-color: #000;
+  border: 1px soild #212121;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 400;
+  height: 48px;
+  left: 1px;
+  padding: 15px 28px;
+}
+
+footer {
+  padding: 10px;
+}
+
+footer .icon {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .grid3,
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
