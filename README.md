@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# myblog (frontend)
+Welcome to MyBlog, a dynamic and user-friendly platform designed to enhance your blogging experience. This frontend project offers a seamless interface that caters to both readers and writers, making content creation and consumption enjoyable and intuitive.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# UI Preview
+### Home page
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/dc03dae1-6ba0-4889-beba-0bdd48c5c94f)
+This is the project's home page. The top navigation bar allows users to access other pages and remains fixed even when scrolling down.
+The slider displays blog categories, which users can navigate by clicking the left or right arrows.
+Below the slider, user-posted blogs are showcased, each featuring a cover image, title, blog snippet, and icons indicating the creation date, comment count, and sharing options.
 
-## Available Scripts
+### Drop down menu
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/daa83580-f8cf-4d43-9c65-018a773db0eb)
+This the drop down menu, can be accessed by clicking on the icon in the top right corner
 
-In the project directory, you can run:
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/1afc14b4-d67b-449e-b990-d90a688a6f21)
+If the user is logged out, the icon will change to "My Account", the user can go to log in page through it.
 
-### `npm start`
+### Login page
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/eae4d691-cc34-48e3-a77f-af5d7adb4fa8)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Register page
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/90627f2d-e45e-4da2-9169-26d5dd66e73b)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Detail page
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/9758daf5-956f-4297-8ea0-f03de0b6bbdf)
+This is the detail page for a blog, accessible by clicking on the blog's cover image or title.
+Next to the title, there are two buttons: "Update Post" and "Delete Post".
 
-### `npm test`
+### Profile page
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/89964922-ebbe-4dfc-b652-6bfef0692ea9)
+This is the profile page, accessible by clicking on the portrait in the drop-down menu.
+Here, users can update their username, email, and password.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### "Create post" page
+![image](https://github.com/Daniel-codeApe/Blog/assets/172876551/ffec8b12-0ba1-4c8e-a97f-5960ad0bcd79)
+This is the "create post" page, acessible by clicking on the "create post" in the drop down menu.
+The user can select a local image as cover.
 
-### `npm run build`
+# Project features
+1. Beautiful and clear UI
+2. Have pages or buttons for backend features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Technologies used
+1. React
+2. react-router-dom
+3. react-slick
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# How to run this project
+### Clone the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Install dependencies
+npm install
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### run the project
+npm start
