@@ -10,9 +10,11 @@ export const Create = () => {
                     <img src='https://images.pexels.com/photos/261579/pexels-photo-261579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='user' />
                 </div>
                 <form>
+                    {/* where the user input the cover of their new blog */}
                     <div className='inputFile flexCenter'>
                         <input type='file' />
                     </div>
+                    {/* title input, content input, and submit button */}
                     <input type='text' placeholder='Title' />
                     <textarea name='' id='' cols='30' rows='10'></textarea>
                     <button className='button'>Create Post</button>

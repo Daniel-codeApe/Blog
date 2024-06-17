@@ -9,6 +9,7 @@ export const Footer = () => {
         <footer className='boxItems'>
             <div className='container flex'>
                 <p>Proin interdum sed velit id consequat. Morbi sit amet neque ut sem vehicula posuere quis gravida tellus</p>
+                {/* Icons of facebook, instagram, and twitter */}
                 <div className='social'>
                     <BsFacebook className='icon' />
                     <RiInstagramFill className='icon' />

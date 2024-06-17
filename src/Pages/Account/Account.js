@@ -17,13 +17,19 @@ export const Account = () => {
                         </div>
                         </div>
                         <div className='right'>
+                            {/* will show current username */}
                             <label>Username</label>
                             <input type='text' />
+
+                            {/* will show current email */}
                             <label>Email</label>
                             <input type='email' />
+
+                            {/* won't show current password, but can input new password */}
                             <label>Password</label>
                             <input type='password' />
 
+                            {/* submit button */}
                             <button className='button'>Update</button>
                         </div>
                     </div>

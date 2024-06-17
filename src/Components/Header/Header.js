@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 export const Header = () => {
 
+  // make the header always on the top
   window.addEventListener("scroll", function() {
     const header = this.document.querySelector(".header");
     header.classList.toggle("active", this.window.scrollY > 100);
@@ -15,6 +16,7 @@ export const Header = () => {
 
   return (
     <>
+      {/* logo */}
       <header className='header'>
         <div className='sContainer flex'>
           <div className='logo'>
@@ -25,6 +27,7 @@ export const Header = () => {
           <nav>
             <ul>
               {
+                // navigation bar, link to the related pages
                 nav.map((link) => (
                   <li key={link.id}>
                     <Link to="/">{link.text}</Link>

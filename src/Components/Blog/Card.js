@@ -12,17 +12,24 @@ export const Card = () => {
                 {blog.map((item) => (
                     <div className='box boxitems' key={item.id}>
                         <div className='img'>
-                            <img src={item.cover} alt='cover' />
+                            {/* link to the detail page when click on the title */}
+                            <Link to={`/details/${item.id}`}>
+                                <img src={item.cover} alt='cover' />
+                            </Link>
                         </div>
                         <div className='details'>
                             <div className='tags'>
                                 <AiOutlineTags className='icon' />
+                                {/* Make a link for every blog card's category, suppose to lead to 
+                                a page the includes every blog within that category */}
                                 <a href='/'>#{item.category}</a>
                             </div>
+                            {/* link to the detail page when click on the title */}
                             <Link to={`/details/${item.id}`} className='link'>
                                 <h3>{item.title}</h3>
                             </Link>
                             <p>{item.desc.slice(0, 180)} ...</p>
+                            {/* Icons for created date, number of comments, and share */}
                             <div className='date'>
                                 <AiOutlineClockCircle className='icon' /> <label>{item.date}</label>
                                 <AiOutlineComment className='icon' /> <label>27</label>

@@ -28,9 +28,12 @@ export const Details = () => {
                 </div>
                 <div className='right'>
                     <div className='buttons'>
+                        {/* "update content" button */}
                         <button className='button'>
                             <BsPencilSquare />
                         </button>
+
+                        {/* "delete blog" button */}
                         <button className='button'>
                             <AiOutlineDelete />
                         </button>

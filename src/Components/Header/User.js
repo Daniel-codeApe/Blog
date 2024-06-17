@@ -9,9 +9,15 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 export const User = () => {
 
-  const user = true;
+  // const user = true;
+
+  const [user, setUserLoggedIn] = useState(true);
 
   const [profileOpen, setprofileOpen] = useState(true);
+
+  const logout = () => {
+    setUserLoggedIn(false);
+  }
 
   const close = () => {
     setprofileOpen(false);
@@ -21,6 +27,7 @@ export const User = () => {
     <>
       <div className='profile'>
         {
+          // If user is true, show profile menu, otherwise show a link to login page
           user ? (
             <>
               <button className='portrait' onClick={() => setprofileOpen(!profileOpen)}>
@@ -29,6 +36,7 @@ export const User = () => {
 
               {profileOpen && (
                 <div className='openProfile boxItem' onClick={close}>
+                  {/* To profile update page */}
                   <Link to={'/account'}>
                     <div className='image'>
                       <div className='img'>
@@ -42,6 +50,7 @@ export const User = () => {
                     </div>
                   </Link>
 
+                  {/* To create post page */}
                   <Link to={'/create'}>
                     <button className='box'>
                       <RiImageAddLine className='icon'/>
@@ -49,6 +58,7 @@ export const User = () => {
                     </button>
                   </Link>
 
+                  {/* Right now it's blank */}
                   <Link to={'/settings'}>
                     <button className='box'>
                       <IoSettingsOutline className='icon'/>
@@ -56,6 +66,7 @@ export const User = () => {
                     </button>
                   </Link>
 
+                  {/* Right now it's blank */}
                   <Link to={'/wishlist'}>
                     <button className='box'>
                       <CiHeart className='icon'/>
@@ -63,14 +74,17 @@ export const User = () => {
                     </button>
                   </Link>
 
+                  {/* Log out */}
                   <button className='box'>
                     <IoLogOutOutline className='icon'/>
-                    <h4>Log Out</h4>
+                    <h4 onClick={logout}>Log Out</h4>
                   </button>
                 </div>
               )}
             </>
           ) : (
+            // to login page, but right now we can't pass information between pages, 
+            // so you can just refersh the page and you will be logged in again
             <Link to={'/login'}>
               <button>My Account</button>
             </Link>
