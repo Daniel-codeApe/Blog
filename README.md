@@ -46,7 +46,7 @@ The user can select a local image as cover.
 3. react-slick
 
 # How to run this project
-### CLone the project
+### Clone the project
 
 ### Install dependencies
 npm install
