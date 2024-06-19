@@ -1,13 +1,15 @@
-const express = require('express')
+import express from 'express';
 // import { MongoClient } from 'mongodb';
-const cors = require('cors');
-const multer = require('multer');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+import cors from 'cors';
+import multer from 'multer';
+import { connect } from 'mongoose';
+import { config } from 'dotenv';
 
-dotenv.config();
+import userRoute from './routes/user.route.js';
 
-mongoose.connect(process.env.mongo).then(
+config();
+
+connect(process.env.mongo).then(
     () => console.log("connected")
 );
 
@@ -15,9 +17,8 @@ const app = express();
 app.use(cors());
 
 
-let database_name = "blog";
-var database;
-
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log("running!");
-})
+});
+
+app.use('/api/user', userRoute);
