@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import loginImg from '../../Assets/images/login.jpg'
 import { Link } from 'react-router-dom'
 import './Login.css'
 
 export const Register = () => {
+    const [formData, setFormData] = useState({});
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.id]: e.target.value});
+        console.log(formData);
+    }
+
   return (
     <>
         <section className='login'>
@@ -17,11 +24,11 @@ export const Register = () => {
                 </div>
                 <form>
                     <span>Username</span>
-                    <input type='text' required />
+                    <input type='text' id='username' onChange={handleChange} />
                     <span>Email address</span>
-                    <input type='email' required />
+                    <input type='email' id='email' onChange={handleChange} />
                     <span>Password</span>
-                    <input type='password' required />
+                    <input type='password' id='password' onChange={handleChange} />
                     <button className='button'>Register</button>
                     <Link to={'/login'}>Log in</Link>
                 </form>

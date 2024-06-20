@@ -8,7 +8,7 @@ import { GrFormPrevious } from "react-icons/gr";
 
 import './Category.css'
 
-{/* Draw arraws for the slider, no functions yet */}
+/* Draw arraws for the slider, no functions yet */
 const SampleNextArrow = (props) => {
     const { onClick } = props 
     return (
@@ -32,7 +32,7 @@ const SamplePrevArrow = (props) => {
 }
 
 export const Category = () => {
-    {/* Settings of the slider */}
+    /* Settings of the slider */
     const settings = {
         dots: false,
         infinite: true,

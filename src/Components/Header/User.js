@@ -11,7 +11,7 @@ export const User = () => {
 
   // const user = true;
 
-  const [user, setUserLoggedIn] = useState(true);
+  const [user, setUserLoggedIn] = useState(false);
 
   const [profileOpen, setprofileOpen] = useState(true);
 
