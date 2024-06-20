@@ -1,7 +1,7 @@
 import React from 'react'
 import './Blog.css'
 import { blog } from '../../Assets/data/data.js'
-import { AiOutlineClockCircle, AiOutlineComment, AiOutlineShareAlt, AiOutlineTags } from "react-icons/ai"
+import { AiOutlineClockCircle, AiOutlineComment, AiOutlineShareAlt, AiOutlineTags } from "react-icons/ai/index.esm.js"
 import { Link } from 'react-router-dom'
 
 export const Card = () => {

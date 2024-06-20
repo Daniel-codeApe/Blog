@@ -3,12 +3,12 @@ import { category } from '../../Assets/data/data.js'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { MdNavigateNext } from "react-icons/md";
-import { GrFormPrevious } from "react-icons/gr";
+import { MdNavigateNext } from "react-icons/md/index.esm.js";
+import { GrFormPrevious } from "react-icons/gr/index.esm.js";
 
 import './Category.css'
 
-{/* Draw arraws for the slider, no functions yet */}
+/* Draw arraws for the slider, no functions yet */
 const SampleNextArrow = (props) => {
     const { onClick } = props 
     return (
@@ -32,7 +32,7 @@ const SamplePrevArrow = (props) => {
 }
 
 export const Category = () => {
-    {/* Settings of the slider */}
+    /* Settings of the slider */
     const settings = {
         dots: false,
         infinite: true,

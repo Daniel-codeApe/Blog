@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import portrait from '../../Assets/images/portrait.jpg'
 import { Link } from 'react-router-dom'
 
-import { RiImageAddLine } from 'react-icons/ri';
-import { IoSettingsOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import { IoLogOutOutline } from "react-icons/io5";
+import { RiImageAddLine } from 'react-icons/ri/index.esm.js';
+import { IoSettingsOutline } from "react-icons/io5/index.esm.js";
+import { CiHeart } from "react-icons/ci/index.esm.js";
+import { IoLogOutOutline } from "react-icons/io5/index.esm.js";
 
 export const User = () => {
 

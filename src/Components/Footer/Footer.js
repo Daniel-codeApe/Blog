@@ -1,7 +1,7 @@
 import React from 'react'
-import { AiFillTwitterCircle } from 'react-icons/ai'
-import { BsFacebook } from 'react-icons/bs'
-import { RiInstagramFill } from 'react-icons/ri'
+import { AiFillTwitterCircle } from 'react-icons/ai/index.esm.js'
+import { BsFacebook } from 'react-icons/bs/index.esm.js'
+import { RiInstagramFill } from 'react-icons/ri/index.esm.js'
 
 export const Footer = () => {
   return (

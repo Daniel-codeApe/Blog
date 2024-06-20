@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './Details.css'
 import { useParams } from 'react-router-dom'
 import { blog } from '../../Assets/data/data.js'
-import { BsPencilSquare } from "react-icons/bs";
-import { AiOutlineDelete } from 'react-icons/ai';
+import { BsPencilSquare } from "react-icons/bs/index.esm.js";
+import { AiOutlineDelete } from 'react-icons/ai/index.esm.js';
 
 export const Details = () => {
     const {id} = useParams()
@@ -16,7 +16,7 @@ export const Details = () => {
         if (blogs) {
             setBlogs(blogs)
         }
-    }, [])
+    }, [id])
 
   return (
     <>
