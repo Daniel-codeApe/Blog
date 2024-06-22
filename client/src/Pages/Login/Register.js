@@ -1,14 +1,43 @@
 import React, { useState } from 'react'
 import loginImg from '../../Assets/images/login.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 
 export const Register = () => {
     const [formData, setFormData] = useState({});
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.id]: e.target.value});
-        console.log(formData);
+        setFormData({...formData, [e.target.id]: e.target.value.trim()});
+    }
+
+    const handleSubmission = async (e) => {
+        e.preventDefault();
+        if (!formData.username || !formData.email || !formData.password) {
+            return setErrorMessage('Please fill out all required fields!');
+        }
+        try {
+            setLoading(true);
+            setErrorMessage(null);
+            const res = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            const data = await res.json();
+            if (data.success == false) {
+                return setErrorMessage(data.message);
+            }
+            setLoading(false);
+            if (res.ok) {
+                navigate('/login')
+            }
+        } catch (err) {
+            setLoading(false);
+            setErrorMessage(err.message);
+        }
     }
 
   return (
@@ -22,15 +51,22 @@ export const Register = () => {
                         <h1>My Account</h1>
                     </div>
                 </div>
-                <form>
-                    <span>Username</span>
+                <form onSubmit={handleSubmission}>
+                    <label htmlFor='username'>Username *</label>
                     <input type='text' id='username' onChange={handleChange} />
-                    <span>Email address</span>
+                    <label htmlFor='email'>Email address *</label>
                     <input type='email' id='email' onChange={handleChange} />
-                    <span>Password</span>
+                    <label htmlFor='password'>Password *</label>
                     <input type='password' id='password' onChange={handleChange} />
-                    <button className='button'>Register</button>
+                    <button className='button' type='submit' disabled={loading}>
+                        {loading ? 'loading...' : 'Register'}
+                    </button>
                     <Link to={'/login'}>Log in</Link>
+                    {
+                        errorMessage && (
+                            <span>{errorMessage}</span>
+                        )
+                    }
                 </form>
             </div>
         </section>

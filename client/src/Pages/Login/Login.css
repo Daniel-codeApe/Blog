@@ -36,3 +36,10 @@
     margin-top: 20px;
     text-decoration: none;
 }
+
+.login alert {
+    margin-top: 5px;
+    padding: 15px;
+    color: rgb(223, 0, 0);
+    background-color: lightpink;
+}
