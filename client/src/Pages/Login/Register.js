@@ -27,7 +27,7 @@ export const Register = () => {
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
-            if (data.success == false) {
+            if (data.success === false) {
                 return setErrorMessage(data.message);
             }
             setLoading(false);
@@ -61,12 +61,8 @@ export const Register = () => {
                     <button className='button' type='submit' disabled={loading}>
                         {loading ? 'loading...' : 'Register'}
                     </button>
-                    <Link to={'/login'}>Log in</Link>
-                    {
-                        errorMessage && (
-                            <span>{errorMessage}</span>
-                        )
-                    }
+                    <p>Aleady have an account? <Link to={'/login'}>Log in</Link></p>
+                    { errorMessage && (<alert>{errorMessage}</alert>) }
                 </form>
             </div>
         </section>
