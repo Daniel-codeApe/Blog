@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 //import image from '../../Assets/images/chooseImage.png'
 import portrait from '../../Assets/images/portrait.jpg'
 import './Account.css'
 
 export const Account = () => {
+    const [imageFile, setImageFile] = useState(null);
+    const [imageFileURL, setImageFileUrl] = useState(null);
+    const fileRef = useRef();
+
+    function binaryToBlob(binaryData, contentType) {
+        return new Blob([binaryData], {type: contentType});
+    }
+    
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImageFile(file);
+            // console.log(imageFile instanceof File); 
+            // console.log(imageFile instanceof Blob);
+            setImageFileUrl(URL.createObjectURL(binaryToBlob(imageFile)));
+        }
+        console.log(imageFile, imageFileURL);
+    }
   return (
     <>
         <section className='accountinfo'>
@@ -11,11 +29,11 @@ export const Account = () => {
                 <h1>Account Infomation</h1>
                 <div className='content'>
                     <div className='left'>
-                        <div className='img flexCenter'>
-                            <input type='file' src={portrait} alt='imgs' />
-                            <img src={portrait} alt='images' />
-                        </div>
-                        </div>
+                        <form>
+                            <input type='file' onChange={handleImageChange} accept='image/*' ref={fileRef} hidden/>
+                        </form>
+                        <img src={imageFileURL || portrait} alt='images' onClick={() => fileRef.current.click()} />
+                    </div>
                         <div className='right'>
                             {/* will show current username */}
                             <label>Username</label>

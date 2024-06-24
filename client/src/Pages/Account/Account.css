@@ -17,16 +17,10 @@
 .accountinfo .left {
     width: 150px;
     position: relative;
-    justify-content: flex-start;
 }
 
-
-.accountinfo .left .img input {
-    width: 150px;
-    height: 150px;
-    position: relative;
-    z-index: 2;
-    opacity: 0;
+.accountinfo .left form {
+    display: none;
 }
 
 .accountinfo .right {
@@ -34,7 +28,7 @@
     margin-left: 50px;
 }
 
-.accountinfo .img img {
+.accountinfo img {
     position: absolute;
     top: 0;
     left: 0;

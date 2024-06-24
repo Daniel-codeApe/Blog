@@ -7,17 +7,19 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
 
+import { useSelector } from 'react-redux';
+
 export const User = () => {
 
-  // const user = true;
+  const {currentUser} = useSelector(state => state.user);
 
-  const [user, setUserLoggedIn] = useState(false);
+  // const [user, setUserLoggedIn] = useState(false);
 
   const [profileOpen, setprofileOpen] = useState(true);
 
-  const logout = () => {
-    setUserLoggedIn(false);
-  }
+  // const logout = () => {
+  //   setUserLoggedIn(false);
+  // }
 
   const close = () => {
     setprofileOpen(false);
@@ -28,7 +30,7 @@ export const User = () => {
       <div className='profile'>
         {
           // If user is true, show profile menu, otherwise show a link to login page
-          user ? (
+          currentUser ? (
             <>
               <button className='portrait' onClick={() => setprofileOpen(!profileOpen)}>
                 <img src={portrait} alt='user' width={'100px'} />
@@ -37,18 +39,16 @@ export const User = () => {
               {profileOpen && (
                 <div className='openProfile boxItem' onClick={close}>
                   {/* To profile update page */}
-                  <Link to={'/account'}>
                     <div className='image'>
                       <div className='img'>
                         <img src={portrait} alt='userLogin' width={'100px'} />
                       </div>
 
                       <div className='text'>
-                        <h4>Steel Dan</h4>
-                        <p>Singarpore</p>
+                        <span>{currentUser.username}</span>
+                        <h4>{currentUser.email}</h4>
                       </div>
                     </div>
-                  </Link>
 
                   {/* To create post page */}
                   <Link to={'/create'}>
@@ -59,10 +59,10 @@ export const User = () => {
                   </Link>
 
                   {/* Right now it's blank */}
-                  <Link to={'/settings'}>
+                  <Link to={'/account'}>
                     <button className='box'>
                       <IoSettingsOutline className='icon'/>
-                      <h4>Settings</h4>
+                      <h4>Profile</h4>
                     </button>
                   </Link>
 
@@ -77,7 +77,7 @@ export const User = () => {
                   {/* Log out */}
                   <button className='box'>
                     <IoLogOutOutline className='icon'/>
-                    <h4 onClick={logout}>Log Out</h4>
+                    <h4>Log Out</h4>
                   </button>
                 </div>
               )}
