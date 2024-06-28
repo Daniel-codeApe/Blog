@@ -2,21 +2,56 @@
     margin: 115px 0;
 }
 
+.accountinfo h1{
+  text-align: center;
+}
+
 .accountinfo .container {
     padding: 50px;
-    max-width: 60%;
     margin: auto;
 }
 
 .accountinfo .content {
     margin-top: 80px;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.accountinfo .content .actions {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column;
+  gap: 30px;
+}
+
+.accountinfo .content .actions button {
+  font-size: large;
+  color: red;
+}
+
+.accountinfo .content .submitForm {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  align-items: center;
+  gap: 20px; /* Adjust the gap as needed */
+  margin: auto;
 }
 
 .accountinfo .left {
-    width: 150px;
-    position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accountinfo .left img {
+  cursor: pointer;
+  max-width: 100%; /* Ensure image is responsive */
+  height: auto;
+  border-radius: 50%;
 }
 
 .accountinfo .left form {
@@ -24,11 +59,13 @@
 }
 
 .accountinfo .right {
-    width: calc(100% - 180px);
-    margin-left: 50px;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adjust the gap as needed */
 }
 
-.accountinfo img {
+/* .accountinfo img {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,7 +73,7 @@
     height: 150px;
     z-index: 1;
     border-radius: 50%;
-}
+} */
 
 .accountinfo .right label {
     font-size: 17px;
@@ -44,3 +81,55 @@
     margin-bottom: 10px;
     display: block;
 }
+
+.accountinfo .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .accountinfo .modal-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4;
+    background-color: #fefefe;
+    margin: 20% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%; /* Could be more or less, depending on screen size */
+  }
+
+  .accountinfo .modal-content p {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .accountinfo .modal-content button {
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .accountinfo .modal-content .delete {
+    border-color: red;
+    color: red;
+  }
+  
+  .accountinfo .modal-content .close:hover {
+    background-color: grey;
+    color: white;
+  }
+
+  .accountinfo .modal-content .delete:hover {
+    background-color: red;
+    color: white;
+  }

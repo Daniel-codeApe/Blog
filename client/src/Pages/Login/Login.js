@@ -24,10 +24,10 @@ export const Login = () => {
         }
         try {
             dispatch(signInStart());
-            const res = await fetch('http://localhost:5000/api/auth/login', {
+            const res = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
             });
             const data = await res.json();
             if (data.success === false) {
@@ -35,7 +35,7 @@ export const Login = () => {
             }
             if (res.ok) {
                 dispatch(signInSuccess(data));
-                navigate('/');
+                navigate('/Blog');
             }
         } catch (err) {
             dispatch(signInFailure(err.message));
@@ -62,7 +62,7 @@ export const Login = () => {
                         {loading ? "Loading..." : "Log in"}
                     </button>
                     <p>Doesn't hava an account? <Link to={'/register'}>Register</Link></p>
-                    { errorMessage && (<alert>{errorMessage}</alert>) }
+                    { errorMessage && (<span className='alert'>{errorMessage}</span>) }
                 </form>
             </div>
         </section>

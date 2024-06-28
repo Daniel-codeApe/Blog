@@ -16,7 +16,7 @@ export const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route exact path='/' Component={Home} />
+          <Route exact path='/Blog' Component={Home} />
           <Route exact path='/details/:id' Component={Details} />
           <Route exact path='/login' Component={Login} />
           <Route exact path='/account' Component={Account} />

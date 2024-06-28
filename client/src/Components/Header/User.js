@@ -7,7 +7,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOutSuccess } from '../../app/user/userSlice';
 
 export const User = () => {
 
@@ -15,15 +16,34 @@ export const User = () => {
 
   // const [user, setUserLoggedIn] = useState(false);
 
-  const [profileOpen, setprofileOpen] = useState(true);
+  const [profileOpen, setprofileOpen] = useState(false);
 
   // const logout = () => {
   //   setUserLoggedIn(false);
   // }
 
   const close = () => {
-    setprofileOpen(false);
+    setprofileOpen(!profileOpen);
   }
+
+  const dispatch = useDispatch();
+
+
+  const handleLogOut = async () => {
+    try {
+        const res = await fetch('http://localhost:5000/api/user/logout', {
+            method: 'POST',
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            console.log(data.message);
+        } else {
+            dispatch(logOutSuccess(data));
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
   return (
     <>
@@ -33,7 +53,7 @@ export const User = () => {
           currentUser ? (
             <>
               <button className='portrait' onClick={() => setprofileOpen(!profileOpen)}>
-                <img src={portrait} alt='user' width={'100px'} />
+                <img src={portrait || currentUser.profileImageURL} alt='user' width={'100px'} />
               </button>
 
               {profileOpen && (
@@ -75,7 +95,7 @@ export const User = () => {
                   </Link>
 
                   {/* Log out */}
-                  <button className='box'>
+                  <button className='box' onClick={handleLogOut}>
                     <IoLogOutOutline className='icon'/>
                     <h4>Log Out</h4>
                   </button>

@@ -30,7 +30,7 @@ export const Header = () => {
                 // navigation bar, link to the related pages
                 nav.map((link) => (
                   <li key={link.id}>
-                    <Link to="/">{link.text}</Link>
+                    <Link to="/Blog">{link.text}</Link>
                   </li>
                 ))
               }
