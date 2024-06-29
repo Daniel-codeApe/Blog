@@ -53,7 +53,7 @@ export const User = () => {
           currentUser ? (
             <>
               <button className='portrait' onClick={() => setprofileOpen(!profileOpen)}>
-                <img src={portrait || currentUser.profileImageURL} alt='user' width={'100px'} />
+                <img src={currentUser.profileImageURL || portrait} alt='user' width={'100px'} />
               </button>
 
               {profileOpen && (

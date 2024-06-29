@@ -2,10 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 //import image from '../../Assets/images/chooseImage.png'
 import portrait from '../../Assets/images/portrait.jpg'
 import './Account.css'
+import { v4 as uuidv4 } from 'uuid';
 
-
-import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
-import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import imageCompression from 'browser-image-compression';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
@@ -26,7 +25,7 @@ export const Account = () => {
 
     const [formData, setFormData] = useState({});
     const [imageFile, setImageFile] = useState(null);
-    const [imageFileURL, setImageFileURL] = useState(null);
+    const [imageFileURL, setImageFileURL] = useState(portrait);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -121,29 +120,21 @@ export const Account = () => {
             console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
             console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
 
-            const newFileName = new Date().getMilliseconds() + compressedFile.name;
+            const newFileName = uuidv4() + compressedFile.name;
 
             const uploadParams = {
                 Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
                 Key: newFileName,
                 Body: compressedFile,
+                ACL: 'public-read',
             };
             const command = new PutObjectCommand(uploadParams);
             const data = await s3.send(command);
             console.log(data);
 
-            // Construct the URL of the uploaded image
-            const retrieveParams = {
-                Bucket: process.env.REACT_APP_S3_BUCKET_NAME, 
-                Key: newFileName, 
-            };
-            const signedUrl = await getSignedUrl(s3, new GetObjectCommand(retrieveParams));
-            setImageFileURL(signedUrl);
-            setFormData({...formData, profileImageURL: imageFileURL});
-            console.log("generated url:" + signedUrl);
-            console.log("Image url:" + imageFileURL);
-            console.log("form url:" + formData.profileImageURL);
 
+            const url = `https://${process.env.REACT_APP_S3_BUCKET_NAME}.s3.amazonaws.com/${newFileName}`;
+            setImageFileURL(url);
         } catch (error) {
             console.log(error);
         }
@@ -152,8 +143,21 @@ export const Account = () => {
     useEffect(() => {
         if (imageFile) {
             uploadImage();
-        }
+        };
     }, [imageFile]);
+
+    useEffect(() => {
+        if (imageFileURL && imageFile) {
+            setFormData((prevData) => ({ ...prevData, profileImageURL: imageFileURL }));
+            console.log("image url:" + imageFileURL);
+        };
+    }, [imageFileURL]);
+
+    useEffect(() => {
+        if (formData.profileImageURL){
+            console.log("form url:" + formData.profileImageURL);
+        };
+    }, [formData]);
 
     useEffect(() => {
         if (showModal) {
@@ -177,11 +181,11 @@ export const Account = () => {
                         </div>
                         <div className='right'>
                             <label htmlFor='username'>Username</label>
-                            <input type='text' id='username' placeholder='username' onChange={handleTextChange}/>
+                            <input type='text' id='username' placeholder='new username' onChange={handleTextChange}/>
                             <label htmlFor='email'>Email</label>
-                            <input type='email' id='email' placeholder='email' onChange={handleTextChange} />
+                            <input type='email' id='email' placeholder='new email' onChange={handleTextChange} />
                             <label htmlFor='password'>Password</label>
-                            <input type='password' id='password' placeholder='password' onChange={handleTextChange}/>
+                            <input type='password' id='password' placeholder='new password' onChange={handleTextChange}/>
                             <button className='button' type='submit'>Update</button>
                         </div>
                     </form>
