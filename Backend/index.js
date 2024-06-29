@@ -6,17 +6,14 @@ import cookieParser from 'cookie-parser';
 
 import authRoute from './routes/auth.route.js';
 import userRoute from './routes/user.route.js';
+import postRoute from './routes/post.route.js';
 
 dotenv.config();
 
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({
-    credentials: true,
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200,
-  }));
+app.use(cors());
 
 mongoose
 .connect(process.env.MONGO)
@@ -29,6 +26,7 @@ app.listen(5000, () => {
 
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use('/api/post', postRoute);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
