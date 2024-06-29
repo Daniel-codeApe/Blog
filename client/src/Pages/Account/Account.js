@@ -177,7 +177,7 @@ export const Account = () => {
                     <form className='submitForm' onSubmit={handleSubmit}>
                         <div className='left'>
                             <input type='file' onChange={handleImageChange} accept='image/*' ref={fileRef} hidden/>
-                            <img src={imageFileURL || portrait} alt='images' onClick={() => fileRef.current.click()} />
+                            <img src={currentUser.profileImageURL || portrait} alt='images' onClick={() => fileRef.current.click()} />
                         </div>
                         <div className='right'>
                             <label htmlFor='username'>Username</label>

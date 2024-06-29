@@ -44,7 +44,7 @@ export const login = async (req, res, next) => {
             return next(errorHandler(400, "Password is invalid"));
         }
 
-        const token = jwt.sign({id: validUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+        const token = jwt.sign({id: validUser._id}, process.env.JWT_SECRET, {expiresIn: '1d'});
 
         const {password: pass, ...rest} = validUser._doc;
 

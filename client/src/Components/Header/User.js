@@ -61,7 +61,7 @@ export const User = () => {
                   {/* To profile update page */}
                     <div className='image'>
                       <div className='img'>
-                        <img src={portrait} alt='userLogin' width={'100px'} />
+                        <img src={currentUser.profileImageURL || portrait} alt='userLogin' width={'100px'} />
                       </div>
 
                       <div className='text'>
