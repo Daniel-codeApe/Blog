@@ -30,9 +30,20 @@
     border: none;
 }
 
+.newPost select {
+    margin-bottom: 20px;
+    padding: 8px 16px;
+}
+
 .newPost .image img {
     width: 100%;
     height: 300px;
     z-index: 1;
     border-radius: 5px;
+}
+.newPost .alert {
+    margin-top: 5px;
+    padding: 15px;
+    color: rgb(223, 0, 0);
+    background-color: lightpink;
 }

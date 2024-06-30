@@ -69,7 +69,7 @@ export const category = [
     },
     {
       id: 5,
-      category: "Fun",
+      category: "Fashion",
       title: "Party",
       cover: ca5,
     },
