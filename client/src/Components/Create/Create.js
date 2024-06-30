@@ -1,15 +1,71 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Create.css'
 import { useNavigate } from 'react-router-dom';
+
+import { v4 as uuidv4 } from 'uuid';
+
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import imageCompression from 'browser-image-compression';
 
 export const Create = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({});
+    const [uploadMessage, setUploadMessage] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
+    const [imageFile, setImageFile] = useState(null);
 
     const handleTextChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value});
+    }
+
+    const handleImageChange = (e) => {
+        setImageFile(e.target.files[0]);
+        setUploadMessage('image selected');
+    }
+
+    const uploadImage = async () => {
+        if (!imageFile) {
+            setUploadMessage('You need to choose an image first!');
+            return;
+        }
+
+        const options = {
+            maxWidthOrHeight: 300,
+            useWebWorker: true
+        }
+        const s3 = new S3Client({
+            region: process.env.REACT_APP_AWS_REGION,
+            credentials: {
+                accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+            }
+        });
+        try {
+            setUploadMessage('Uploading...')
+            const compressedFile = await imageCompression(imageFile, options);
+            console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+            console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+
+            const newFileName = uuidv4() + compressedFile.name;
+
+            const uploadParams = {
+                Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
+                Key: newFileName,
+                Body: compressedFile,
+                ACL: 'public-read',
+            };
+            const command = new PutObjectCommand(uploadParams);
+            const data = await s3.send(command);
+            console.log(data);
+
+
+            const url = `https://${process.env.REACT_APP_S3_BUCKET_NAME}.s3.amazonaws.com/${newFileName}`;
+            console.log(url);
+            setFormData({...formData, "coverImage": url});
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -34,6 +90,13 @@ export const Create = () => {
         }
     }
 
+    useEffect(() => {
+        if (formData.coverImage){
+            console.log("form url:" + formData.coverImage);
+            setUploadMessage('Image uploaded');
+        };
+    }, [formData]);
+
     console.log(formData);
 
   return (
@@ -45,9 +108,11 @@ export const Create = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                     {/* where the user input the cover of their new blog */}
-                    <div className='inputFile flexCenter'>
-                        <input type='file' />
+                    <div className='inputFile'>
+                        <input type='file' accept='image/*' onChange={handleImageChange}/>
+                        <button className='uploadButton' onClick={uploadImage}>Upload</button>
                     </div>
+                    { uploadMessage && (<span>{uploadMessage}</span>) }
                     <select id='category' onChange={handleTextChange}>
                         <option value={'uncatgorized'}>Select a category (optional)</option>
                         <option value={'Life'}>Life</option>
