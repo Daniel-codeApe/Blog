@@ -1,20 +1,39 @@
-import React from 'react'
-import './Blog.css'
-import { blog } from '../../Assets/data/data.js'
-import { AiOutlineClockCircle, AiOutlineComment, AiOutlineShareAlt, AiOutlineTags } from "react-icons/ai"
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import './Blog.css';
+import { blog } from '../../Assets/data/data.js';
+import { AiOutlineClockCircle, AiOutlineComment, AiOutlineShareAlt, AiOutlineTags } from "react-icons/ai";
+import { Link } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 export const Card = () => {
+    const {currentUser} = useSelector((state) => state.user);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const res = await fetch('/api/post/getPosts', {});
+                const { posts } = await res.json(); // Extract posts array
+                setPosts(posts); // Set the posts state to the array
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        fetchPosts();
+    }, []);
+
+    // console.log(posts);
+    // console.log(Array.isArray(posts));
   return (
     <>
         <section className='blog'>
             <div className='container grid3'>
-                {blog.map((item) => (
-                    <div className='box boxitems' key={item.id}>
+                {posts.map((item) => (
+                    <div className='box boxitems' key={item._id}>
                         <div className='img'>
                             {/* link to the detail page when click on the title */}
-                            <Link to={`/details/${item.id}`}>
-                                <img src={item.cover} alt='cover' />
+                            <Link to={`/details/${item._id}`}>
+                                <img src={item.coverImage} alt='cover' />
                             </Link>
                         </div>
                         <div className='details'>
@@ -25,13 +44,13 @@ export const Card = () => {
                                 <a href='/'>#{item.category}</a>
                             </div>
                             {/* link to the detail page when click on the title */}
-                            <Link to={`/details/${item.id}`} className='link'>
+                            <Link to={`/details/${item._id}`} className='link'>
                                 <h3>{item.title}</h3>
                             </Link>
-                            <p>{item.desc.slice(0, 180)} ...</p>
+                            <p>{item.content.slice(0, 180)} ...</p>
                             {/* Icons for created date, number of comments, and share */}
                             <div className='date'>
-                                <AiOutlineClockCircle className='icon' /> <label>{item.date}</label>
+                                <AiOutlineClockCircle className='icon' /> <label>{item.updatedAt}</label>
                                 <AiOutlineComment className='icon' /> <label>27</label>
                                 <AiOutlineShareAlt className='icon' /> <label>SHARE</label>
                             </div>
