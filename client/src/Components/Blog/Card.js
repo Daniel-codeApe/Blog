@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Blog.css';
-import { blog } from '../../Assets/data/data.js';
+// import { blog } from '../../Assets/data/data.js';
 import { AiOutlineClockCircle, AiOutlineComment, AiOutlineShareAlt, AiOutlineTags } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import {useSelector} from 'react-redux';
+// import {useSelector} from 'react-redux';
 
 export const Card = () => {
-    const {currentUser} = useSelector((state) => state.user);
+    // const {currentUser} = useSelector((state) => state.user);
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
