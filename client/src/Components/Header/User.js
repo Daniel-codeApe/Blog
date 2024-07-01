@@ -14,8 +14,6 @@ export const User = () => {
 
   const {currentUser} = useSelector(state => state.user);
 
-  console.log(currentUser);
-
   // const [user, setUserLoggedIn] = useState(false);
 
   const [profileOpen, setprofileOpen] = useState(false);

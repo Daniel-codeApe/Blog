@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import imageCompression from 'browser-image-compression';
 import { useSelector } from 'react-redux';
 
 export const Edit = () => {
@@ -54,10 +53,6 @@ export const Edit = () => {
         return;
     }
 
-    const options = {
-        maxWidthOrHeight: 300,
-        useWebWorker: true
-    }
     const s3 = new S3Client({
         region: process.env.REACT_APP_AWS_REGION,
         credentials: {
@@ -67,16 +62,13 @@ export const Edit = () => {
     });
     try {
         setUploadMessage('Uploading...')
-        const compressedFile = await imageCompression(imageFile, options);
-        console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
-        console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-
-        const newFileName = uuidv4() + compressedFile.name;
+  
+        const newFileName = uuidv4() + imageFile.name;
 
         const uploadParams = {
             Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
             Key: newFileName,
-            Body: compressedFile,
+            Body: imageFile,
             ACL: 'public-read',
         };
         const command = new PutObjectCommand(uploadParams);
@@ -122,8 +114,6 @@ export const Edit = () => {
       setErrorMessage(error.message);
     }
   }
-
-  console.log(formData);
 
   return (
     <>

@@ -65,15 +65,12 @@
   gap: 10px; /* Adjust the gap as needed */
 }
 
-/* .accountinfo img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150px;
-    height: 150px;
-    z-index: 1;
-    border-radius: 50%;
-} */
+.accountinfo .alert {
+  margin-top: 5px;
+  padding: 15px;
+  color: rgb(223, 0, 0);
+  background-color: lightpink;
+}
 
 .accountinfo .right label {
     font-size: 17px;

@@ -50,7 +50,7 @@ export const Card = () => {
                             <p>{item.content.slice(0, 180)} ...</p>
                             {/* Icons for created date, number of comments, and share */}
                             <div className='date'>
-                                <AiOutlineClockCircle className='icon' /> <label>{item.updatedAt}</label>
+                                <AiOutlineClockCircle className='icon' /> <label>{new Date(item.updatedAt).toLocaleDateString()}</label>
                                 <AiOutlineComment className='icon' /> <label>27</label>
                                 <AiOutlineShareAlt className='icon' /> <label>SHARE</label>
                             </div>
