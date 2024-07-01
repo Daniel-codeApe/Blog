@@ -22,8 +22,6 @@ export const updateUser = async (req, res, next) => {
         }
     }
 
-    console.log(req.body.profileImageURL);
-
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.userId, {
             $set: {
