@@ -9,6 +9,7 @@ import Account from './Pages/Account/Account'
 import Register from './Pages/Login/Register'
 import Create from './Components/Create/Create'
 import Footer from './Components/Footer/Footer'
+import { Edit } from './Components/Edit/Edit'
 
 export const App = () => {
   return (
@@ -17,7 +18,8 @@ export const App = () => {
         <Header />
         <Routes>
           <Route exact path='/Blog' Component={Home} />
-          <Route exact path='/details/:id' Component={Details} />
+          <Route exact path='/details/:postId' Component={Details} />
+          <Route exact path='/edit/:postId' Component={Edit} />
           <Route exact path='/login' Component={Login} />
           <Route exact path='/account' Component={Account} />
           <Route exact path='/register' Component={Register} />
