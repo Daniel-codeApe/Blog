@@ -76,7 +76,7 @@ export const updatePost = async (req, res, next) => {
                 title: req.body.title,
                 content: req.body.content,
                 category: req.body.category,
-                coverImage: req.body.imageURL,
+                coverImage: req.body.coverImage,
             },
         }, {new: true});
 
