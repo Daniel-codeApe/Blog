@@ -87,10 +87,10 @@ export const User = () => {
                   </Link>
 
                   {/* Right now it's blank */}
-                  <Link to={'/wishlist'}>
+                  <Link to={'/myposts'}>
                     <button className='box'>
                       <CiHeart className='icon'/>
-                      <h4>Liked Posts</h4>
+                      <h4>My Posts</h4>
                     </button>
                   </Link>
 
