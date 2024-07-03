@@ -73,7 +73,7 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                 <>
                     <p>{comment.content}</p>
                     <div>
-                        <button onClick={onLike(comment._id)}>
+                        <button onClick={() => onLike(comment._id)}>
                             <FaRegHeart />
                         </button>
                         <p>
