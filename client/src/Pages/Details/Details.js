@@ -6,6 +6,7 @@ import { BsPencilSquare } from "react-icons/bs";
 import { AiOutlineDelete } from 'react-icons/ai';
 
 import { useSelector } from 'react-redux';
+import { CommentSection } from '../../Components/Comments/CommentSection';
 
 export const Details = () => {
     const {postId} = useParams();
@@ -57,7 +58,7 @@ export const Details = () => {
         } else {
             document.getElementById("myModal").style.display = "none";
         }
-    })
+    }, [showModal])
 
   return (
     <>
@@ -67,7 +68,7 @@ export const Details = () => {
                     <img src={Post.coverImage} alt='' />
                 </div>
                 <div className='right'>
-                    {Post.userId === currentUser._id ? (
+                    {currentUser && Post.userId === currentUser._id ? (
                         <div className='buttons'>
                         {/* "update content" button */}
                         <Link to={`/edit/${postId}`}>
@@ -86,6 +87,7 @@ export const Details = () => {
                     <h1>{Post.title}</h1>
                     <p> {Post.content} </p>
                 </div>
+                <CommentSection postId={postId} />
             </div>
 
             {errorMessgae && (<span className='alert'>{errorMessgae}</span>)}
