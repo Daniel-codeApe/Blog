@@ -1,90 +1,62 @@
-.commentSection {
-    width: 100%;
-}
-
-.commentSection .signedin {
+.comment {
     display: flex;
-    align-items: center;
-    gap: 1;
-    margin-top: 5px;
+    border:1px solid black;
+    justify-content: space-around;
 }
 
-.commentSection .signedin p {
-    font-size: small;
-    color: grey;
+.comment .commenterProtrait {
+    padding-right: 3px;
 }
 
-.commentSection .signedin img {
+.comment .commenterProtrait img {
     height: 35px;
     width: 35px;
     border-radius: 50%;
     object-fit: cover;
-    padding-left: 10px;
 }
 
-.commentSection .signedin .link {
-    padding-left: 10px;
-    color: darkblue;
-}
-
-.commentSection .signedin .link:hover {
-    text-decoration: underline;
-}
-
-.commentSection .notsignedin {
-    font-size: medium; 
-    margin-Top: 5px;
+.comment .individual_section {
     display: flex;
+    flex: 1;
+    flex-direction: column;
 }
 
-.commentSection .notsignedin p {
-    color: teal;
-}
-
-.commentSection .notsignedin .link {
-    margin-top: 30px;
-    padding-left: 10px;
-    color: darkblue;
-}
-
-.commentSection .notsignedin .link:hover {
-    text-decoration: underline;
-}
-
-.commentSection .commentForm {
-    width: 80%;
-    border-color: teal;
-    margin-top: 0;
-    padding: 10px;
-}
-
-.commentSection .commentForm textarea {
-    width: 100%;
-    padding-bottom: 100px;
-}
-
-.commentSection .commentForm .footer {
+.comment .poster {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.commentSection .commentForm .footer p {
-    font-size: small;
-    color: grey;
-    margin: 0;
+    margin-top: 8px;
     padding: 0;
 }
 
-.commentSection .commentForm .footer button {
-    color: white;
-    background-color: black;
-    padding: 5px;
-    border-radius: 5px;
-    margin-left: 10px;
+.comment .poster span {
+    padding-right: 10px;
+    color: lightslategray;
+    font-weight: bold;
 }
 
-.commentSection .commentForm .footer button:hover {
-    color: black;
-    background-color: white;
+.comment .commentBody .content {
+    margin: 0;
+}
+
+.comment .commentBody .like {
+    display: flex;
+    align-items: flex-start;
+}
+
+.comment .commentBody .like p {
+    margin: 5px;
+    padding: 0;
+    font-size: small;
+}
+
+.comment .commentBody .buttons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.comment .commentBody .buttons button {
+    padding: 5px;
+    font-size: medium;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
 }

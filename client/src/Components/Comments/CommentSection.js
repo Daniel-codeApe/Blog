@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
-import "./Comment.css";
+import "./CommentSection.css";
 
 import { Comment } from './Comment.js';
 import portrait from '../../Assets/images/portrait.jpg'
@@ -160,7 +160,6 @@ export const CommentSection = ({postId}) => {
 
             {comments.length > 0 ? (
                 <div className='allComments'>
-                    <h1>Comments</h1>
                     {comments.map((comment) => (
                         <Comment key={comment._id} comment={comment} 
                         onLike={handleLike} onEdit={handleEdit} onDelete={(commentId) => {

@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 
 import moment from 'moment';
 import { FaRegHeart } from "react-icons/fa";
+import portrait from '../../Assets/images/portrait.jpg';
+import './Comment.css';
 
 export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
     const [user, setUser] = useState({});
@@ -54,10 +56,10 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   return (
     <section className='comment'>
         <div className='commenterProtrait'>
-            <img src={user.profileImageURL} alt={user.username} />
+            <img src={portrait || user.profileImageURL} alt={user.username} />
         </div>
-        <div>
-            <div>
+        <div className='individual_section'>
+            <div className='poster'>
                 <span>{user ? `@${user.username}` : 'account deleted'}</span>
                 <span>{moment(comment.createdAt).fromNow()}</span>
             </div>
@@ -70,11 +72,11 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                     </div>
                 </>
             ) : (
-                <>
-                    <p>{comment.content}</p>
-                    <div>
+                <div className='commentBody'>
+                    <p className='content'>{comment.content}</p>
+                    <div className='like'>
                         <button onClick={() => onLike(comment._id)}>
-                            <FaRegHeart />
+                            <FaRegHeart size={20} style={{marginTop: "9px"}} />
                         </button>
                         <p>
                             {comment.numberOfLikes > 0 &&
@@ -82,18 +84,18 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                                 ' ' +
                                 (comment.numberOfLikes === 1 ? 'like' : 'likes')}
                         </p>
+                      </div>
                         {currentUser && (currentUser._id === comment.userId) && (
-                            <>
-                            <button type='button' onClick={handleEdit}>
-                              Edit
-                            </button>
-                            <button type='button' onClick={() => onDelete(comment._id)}>
-                              Delete
-                            </button>
-                          </>
+                            <div className='buttons'>
+                              <button type='button' onClick={handleEdit}>
+                                Edit
+                              </button>
+                              <button type='button' onClick={() => onDelete(comment._id)}>
+                                Delete
+                              </button>
+                          </div>
                         )}
-                    </div>
-                </>
+                </div>
             )}
         </div>
     </section>
