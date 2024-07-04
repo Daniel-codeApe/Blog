@@ -86,6 +86,7 @@ export const Account = () => {
     }
 
     const handleLogOut = async () => {
+        navigate('/login');
         try {
             const res = await fetch('/api/user/logout', {
                 method: 'POST',
@@ -95,7 +96,6 @@ export const Account = () => {
                 console.log(data.message);
             } else {
                 dispatch(logOutSuccess(data));
-                navigate('/login');
             }
         } catch (error) {
             console.log(error.message);
@@ -181,9 +181,11 @@ export const Account = () => {
                         </div>
                         <div className='right'>
                             <label htmlFor='username'>Username</label>
-                            <input type='text' id='username' placeholder='new username' onChange={handleTextChange}/>
+                            <input type='text' id='username' placeholder='new username' 
+                            defaultValue={currentUser.username} onChange={handleTextChange}/>
                             <label htmlFor='email'>Email</label>
-                            <input type='email' id='email' placeholder='new email' onChange={handleTextChange} />
+                            <input type='email' id='email' placeholder='new email' 
+                            defaultValue={currentUser.email} onChange={handleTextChange} />
                             <label htmlFor='password'>Password</label>
                             <input type='password' id='password' placeholder='new password' onChange={handleTextChange}/>
                             <button className='button' type='submit'>Update</button>

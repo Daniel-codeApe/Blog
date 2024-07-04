@@ -42,6 +42,19 @@
     align-items: flex-start;
 }
 
+.comment .commentBody .like .like-button {
+    margin-top: 9px;
+    color: gray;
+}
+
+.comment .commentBody .like .like-button:hover {
+    color: red;
+}
+
+.comment .commentBody .like .like-button.liked {
+    color: red;
+}
+
 .comment .commentBody .like p {
     margin: 5px;
     padding: 0;
@@ -53,10 +66,16 @@
     justify-content: flex-start;
 }
 
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
 .comment .commentBody .buttons button {
     padding: 5px;
     font-size: medium;
     background-color: black;
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
 }

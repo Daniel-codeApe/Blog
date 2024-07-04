@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import portrait from '../../Assets/images/portrait.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { RiImageAddLine } from 'react-icons/ri';
 import { IoSettingsOutline } from "react-icons/io5";
@@ -22,6 +22,8 @@ export const User = () => {
   //   setUserLoggedIn(false);
   // }
 
+  const navigate = useNavigate();
+
   const close = () => {
     setprofileOpen(!profileOpen);
   }
@@ -30,6 +32,7 @@ export const User = () => {
 
 
   const handleLogOut = async () => {
+    navigate('/login');
     try {
         const res = await fetch('http://localhost:5000/api/user/logout', {
             method: 'POST',

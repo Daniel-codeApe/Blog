@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import moment from 'moment';
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import portrait from '../../Assets/images/portrait.jpg';
 import './Comment.css';
 
@@ -56,7 +56,7 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   return (
     <section className='comment'>
         <div className='commenterProtrait'>
-            <img src={portrait || user.profileImageURL} alt={user.username} />
+            <img src={user.profileImageURL || portrait} alt={user.username} />
         </div>
         <div className='individual_section'>
             <div className='poster'>
@@ -75,9 +75,17 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                 <div className='commentBody'>
                     <p className='content'>{comment.content}</p>
                     <div className='like'>
-                        <button onClick={() => onLike(comment._id)}>
-                            <FaRegHeart size={20} style={{marginTop: "9px"}} />
-                        </button>
+                      {currentUser ? (<button className={`like-button ${comment.likes.includes(currentUser._id) ? 'liked' : ''}`} 
+                        onClick={() => {
+                          onLike(comment._id);}}>
+                            <FaHeart size={20} />
+                        </button>) : (
+                          <button className={'like-button'} 
+                          onClick={() => {
+                            onLike(comment._id);}}>
+                              <FaHeart size={20} />
+                          </button>
+                        )}
                         <p>
                             {comment.numberOfLikes > 0 &&
                             comment.numberOfLikes +
@@ -90,6 +98,7 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                               <button type='button' onClick={handleEdit}>
                                 Edit
                               </button>
+                              <div className='divider' />
                               <button type='button' onClick={() => onDelete(comment._id)}>
                                 Delete
                               </button>

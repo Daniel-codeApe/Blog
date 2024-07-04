@@ -125,7 +125,6 @@ export const CommentSection = ({postId}) => {
         }
       };
     
-
     
   return (
     <>
@@ -135,7 +134,7 @@ export const CommentSection = ({postId}) => {
             {currentUser ? (
                 <div className='signedin'>
                     <p>You are now signed in as: </p>
-                    <img src={currentUser.coverImage || portrait} alt='' />
+                    <img src={currentUser.profileImageURL || portrait} alt='' />
                     <Link to={'/account'} className='link'>
                         @{currentUser.username}
                     </Link>

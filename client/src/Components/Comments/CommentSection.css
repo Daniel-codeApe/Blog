@@ -5,7 +5,6 @@
 .commentSection .signedin {
     display: flex;
     align-items: center;
-    gap: 1;
     margin-top: 5px;
 }
 
@@ -15,8 +14,8 @@
 }
 
 .commentSection .signedin img {
-    height: 35px;
-    width: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
     padding-left: 10px;
