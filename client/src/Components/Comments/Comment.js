@@ -35,7 +35,7 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
     
       const handleSave = async () => {
         try {
-          const res = await fetch(`/api/comment/editComment/${comment._id}`, {
+          const res = await fetch(`/api/comment/update/${comment._id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                     <textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
                     <div>
                         <button onClick={handleSave}>Save</button>
-                        <button onClick={setIsEditing(false)}>Cancel</button>
+                        <button onClick={() => setIsEditing(false)}>Cancel</button>
                     </div>
                 </>
             ) : (

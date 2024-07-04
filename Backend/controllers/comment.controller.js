@@ -61,11 +61,11 @@ export const deleteComment = async (req, res, next) => {
         if (!commentToBeDeleted) {
             return next(errorHandler(404, "Comment doesn't exist"));
         }
-        if (req.user.id !== commentToBeDeleted.commentId) {
+        if (req.user.id !== commentToBeDeleted.userId) {
             return next(errorHandler(403, "Only the creator of this comment can delete it"));
         }
 
-        await Comment.findByIdAndDelete(commentToBeDeleted._id);
+        await Comment.findByIdAndDelete(req.params.commentId);
         res.status(200).json("Comment deleted");
     } catch (error) {
         next(error);

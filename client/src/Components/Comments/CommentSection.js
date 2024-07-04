@@ -78,6 +78,7 @@ export const CommentSection = ({postId}) => {
       };
     
       const handleDelete = async (commentId) => {
+        console.log(commentId);
         setShowModal(false);
         try {
           if (!currentUser) {
