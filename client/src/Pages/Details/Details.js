@@ -13,13 +13,13 @@ export const Details = () => {
 
     const [Post, setPost] = useState([]);
     const [errorMessgae, setErrorMessage] = useState(null);
-    const [showModal, setShowModal] = useState(false);
+    const [showModalPost, setShowModalPost] = useState(false);
 
     const { currentUser } = useSelector((state) => state.user);
     const navigate = useNavigate();
 
     const handleDelete = async () => {
-        setShowModal(false);
+        setShowModalPost(false);
 
         try {
             const res = await fetch(`/api/post/deletePost/${postId}/${currentUser._id}`, {
@@ -53,12 +53,12 @@ export const Details = () => {
     }, [postId]);
 
     useEffect(() => {
-        if (showModal) {
-            document.getElementById("myModal").style.display = "block";
+        if (showModalPost) {
+            document.getElementById("myModalPost").style.display = "block";
         } else {
-            document.getElementById("myModal").style.display = "none";
+            document.getElementById("myModalPost").style.display = "none";
         }
-    }, [showModal])
+    }, [showModalPost])
 
   return (
     <>
@@ -78,7 +78,7 @@ export const Details = () => {
                         </Link>
 
                         {/* "delete blog" button */}
-                        <button className='button' onClick={() => setShowModal(true)}>
+                        <button className='button' onClick={() => setShowModalPost(true)}>
                             <AiOutlineDelete />
                         </button>
                     </div>
@@ -92,11 +92,11 @@ export const Details = () => {
 
             {errorMessgae && (<span className='alert'>{errorMessgae}</span>)}
 
-            <div id="myModal" className="modal">
+            <div id="myModalPost" className="modal">
                 <div className="modal-content">
                     <p>Are you sure you want to delete this post?</p>
                     <button className='delete' onClick={handleDelete}>Yes, I'm sure</button>
-                    <button className="close" onClick={() => setShowModal(false)}>No, take me back</button>
+                    <button className="close" onClick={() => setShowModalPost(false)}>No, take me back</button>
                 </div>
             </div>
         </section>

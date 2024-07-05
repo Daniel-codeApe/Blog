@@ -27,16 +27,11 @@ export const nav = [
     },
     {
         id: 3,
-        text: "Pages",
-        url: '/pages'
-    },
-    {
-        id: 4,
         text: "Blog",
         url: '/blog'
     },
     {
-        id: 5,
+        id: 4,
         text: "Contact",
         url: '/contact'
     },
