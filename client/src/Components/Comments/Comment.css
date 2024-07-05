@@ -1,0 +1,81 @@
+.comment {
+    display: flex;
+    border:1px solid black;
+    justify-content: space-around;
+}
+
+.comment .commenterProtrait {
+    padding-right: 3px;
+}
+
+.comment .commenterProtrait img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment .individual_section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.comment .poster {
+    display: flex;
+    margin-top: 8px;
+    padding: 0;
+}
+
+.comment .poster span {
+    padding-right: 10px;
+    color: lightslategray;
+    font-weight: bold;
+}
+
+.comment .commentBody .content {
+    margin: 0;
+}
+
+.comment .commentBody .like {
+    display: flex;
+    align-items: flex-start;
+}
+
+.comment .commentBody .like .like-button {
+    margin-top: 9px;
+    color: gray;
+}
+
+.comment .commentBody .like .like-button:hover {
+    color: red;
+}
+
+.comment .commentBody .like .like-button.liked {
+    color: red;
+}
+
+.comment .commentBody .like p {
+    margin: 5px;
+    padding: 0;
+    font-size: small;
+}
+
+.comment .commentBody .buttons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.comment .commentBody .buttons button {
+    padding: 5px;
+    font-size: medium;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}

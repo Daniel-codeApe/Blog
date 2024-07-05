@@ -1,0 +1,66 @@
+.newPost {
+    margin: 60px 0;
+}
+
+.newPost span {
+    margin: 5px;
+
+}
+
+.newPost .container {
+    max-width: 50%;
+}
+
+.newPost img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.newPost .image {
+    position: relative;
+}
+
+.newPost form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.newPost select {
+    margin-bottom: 20px;
+    padding: 8px 16px;
+}
+
+.newPost .image img {
+    width: 100%;
+    height: 300px;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.newPost .inputFile {
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+.newPost .inputFile .uploadButton {
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    font-size: large;
+}
+
+.newPost .alert {
+    margin-top: 5px;
+    padding: 15px;
+    color: rgb(223, 0, 0);
+    background-color: lightpink;
+}

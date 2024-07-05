@@ -1,0 +1,70 @@
+.updatePost {
+    margin: 60px 0;
+}
+
+.updatePost .container {
+    max-width: 50%;
+}
+
+.updatePost .container form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.updatePost .container select {
+    margin: 20px 0;
+    padding: 8px 16px;
+}
+
+.newPost .inputFile {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.newPost .inputFile input {
+    width: 50%;
+}
+
+.updatePost .image {
+    position: relative;
+}
+
+.updatePost .image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.updatePost .inputFile .uploadButton {
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    font-size: medium;
+}
+
+.updatePost .inputFile span {
+    margin-left: 10px;
+    font-size: medium;
+}
+
+.updatePost .Button {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+}
+
+.updatePost .alert {
+    margin-top: 5px;
+    padding: 15px;
+    color: rgb(223, 0, 0);
+    background-color: lightpink;
+}

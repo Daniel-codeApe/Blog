@@ -1,0 +1,89 @@
+.commentSection {
+    width: 100%;
+}
+
+.commentSection .signedin {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.commentSection .signedin p {
+    font-size: small;
+    color: grey;
+}
+
+.commentSection .signedin img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding-left: 10px;
+}
+
+.commentSection .signedin .link {
+    padding-left: 10px;
+    color: darkblue;
+}
+
+.commentSection .signedin .link:hover {
+    text-decoration: underline;
+}
+
+.commentSection .notsignedin {
+    font-size: medium; 
+    margin-Top: 5px;
+    display: flex;
+}
+
+.commentSection .notsignedin p {
+    color: teal;
+}
+
+.commentSection .notsignedin .link {
+    margin-top: 30px;
+    padding-left: 10px;
+    color: darkblue;
+}
+
+.commentSection .notsignedin .link:hover {
+    text-decoration: underline;
+}
+
+.commentSection .commentForm {
+    width: 80%;
+    border-color: teal;
+    margin-top: 0;
+    padding: 10px;
+}
+
+.commentSection .commentForm textarea {
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+.commentSection .commentForm .footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.commentSection .commentForm .footer p {
+    font-size: small;
+    color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+.commentSection .commentForm .footer button {
+    color: white;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.commentSection .commentForm .footer button:hover {
+    color: black;
+    background-color: white;
+}
