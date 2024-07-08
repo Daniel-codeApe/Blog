@@ -65,19 +65,25 @@ npm install
 
 ### Setup .env file in backend
 Your MongoDB connection link -> MONGO
+
 Your JWT secret key -> JWT_SECRET
 
 ### Setup .env file in frontend
 AWS access key -> REACT_APP_AWS_ACCESS_KEY_ID & REACT_APP_AWS_SECRET_ACCESS_KEY
+
 AWS region -> REACT_APP_AWS_REGION
+
 AWS S3 bucket name -> REACT_APP_S3_BUCKET_NAME
 
 ### run the backend
 cd .\Blog\
+
 npm run dev
 
 wait until "database connected" & "Server is running on port 5000" appears
 
 ## run the frontend
+
 cd .\Blog\client
+
 npm start
