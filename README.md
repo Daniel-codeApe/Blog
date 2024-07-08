@@ -76,7 +76,7 @@ AWS region -> REACT_APP_AWS_REGION
 AWS S3 bucket name -> REACT_APP_S3_BUCKET_NAME
 
 ### run the backend
-cd .\Blog\
+go to \Blog
 
 npm run dev
 
@@ -84,6 +84,6 @@ wait until "database connected" & "Server is running on port 5000" appears
 
 ## run the frontend
 
-cd .\Blog\client
+go to \Blog\client
 
 npm start
